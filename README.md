@@ -1,1 +1,1 @@
-### kubefed for ARM64 architecher
+### kubefed for ARM64 architecture
