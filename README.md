@@ -1,1 +1,2 @@
-### kubefed for ARM64 architecture
+### kubefed for itrix-edge project
+Support ARM64 architecture
