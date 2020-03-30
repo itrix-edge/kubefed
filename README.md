@@ -23,7 +23,7 @@ kubefed init fellowship \
     --apiserver-arg-overrides="--anonymous-auth=false,--v=4"
 ```
 #
-#### 	deploy
+#### 	deploy 
 ```
 helm install /root/kubefed/charts/federation-v2  --version=v0.0.4 --namespace kube-federation-system 
 ``` 
