@@ -25,7 +25,7 @@ kubefed init fellowship \
 #
 #### 	deploy
 ```
-	helm install /root/kubefed/charts/federation-v2  --version=v0.0.4 --namespace kube-federation-system 
+helm install /root/kubefed/charts/federation-v2  --version=v0.0.4 --namespace kube-federation-system 
 ``` 
 #
   
