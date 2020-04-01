@@ -20,7 +20,7 @@ RUN adduser -D -g hyperfed -u 1001 hyperfed
 RUN mkdir -p /hyperfed
      
 WORKDIR /hyperfed/
-COPY /hyperfed .
+COPY bin/hyperfed .
 RUN ln -s hyperfed controller-manager \
  && ln -s hyperfed kubefedctl \
  && ln -s hyperfed webhook
