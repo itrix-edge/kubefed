@@ -64,7 +64,7 @@ subjects:
     name: tiller
     namespace: kube-system
 ```
-Error: no available release name found
+Error : no available release name found
 ```
 kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
 ``` 
