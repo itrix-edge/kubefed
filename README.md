@@ -89,6 +89,7 @@ tar -C /usr/local -xzf go1.14.1.linux-arm64.tar.gz
 export PATH=$PATH:/usr/local/go/bin
 ``` 
 ### Rebuild on arm64 env
+code build
 ``` 
 git clone https://github.com/kubernetes-sigs/kubefed.git
 cd kubefed
