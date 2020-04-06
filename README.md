@@ -28,5 +28,49 @@ kubefed init fellowship \
 helm install /root/kubefed/charts/federation-v2  --version=v0.0.4 --namespace kube-federation-system 
 ``` 
 #
-  
+#### Install helm2 on ARM64 
+Install server
+```
+	wget https://get.helm.sh/helm-v2.16.5-linux-arm64.tar.gz
+	tar -zxvf helm-v2.16.5-linux-arm64.tar.gz
+	mv linux-arm64/helm /usr/local/bin/helm
+```
+Install client
+```
+  helm init --tiller-image=jessestuart/tiller:v2.16.5-arm64
+```
+check
+```
+	kubectl get pod -n kube-system
+```
+kubectl create -f helm-rbac.yml
+```
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: tiller
+  namespace: kube-system
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: tiller
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+  - kind: ServiceAccount
+    name: tiller
+    namespace: kube-system
+```
+Error: no available release name found
+```
+	kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
+``` 
+delete tiller
+``` 
+	kubectl delete deployment tiller-deploy --namespace kube-system
+``` 
+# 
   
