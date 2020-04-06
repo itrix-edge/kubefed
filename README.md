@@ -31,17 +31,17 @@ helm install /root/kubefed/charts/federation-v2  --version=v0.0.4 --namespace ku
 ### Install helm2 on ARM64 
 Install server
 ```
-	wget https://get.helm.sh/helm-v2.16.5-linux-arm64.tar.gz
-	tar -zxvf helm-v2.16.5-linux-arm64.tar.gz
-	mv linux-arm64/helm /usr/local/bin/helm
+wget https://get.helm.sh/helm-v2.16.5-linux-arm64.tar.gz
+tar -zxvf helm-v2.16.5-linux-arm64.tar.gz
+mv linux-arm64/helm /usr/local/bin/helm
 ```
 Install client
 ```
-  helm init --tiller-image=jessestuart/tiller:v2.16.5-arm64
+ helm init --tiller-image=jessestuart/tiller:v2.16.5-arm64
 ```
 check
 ```
-	kubectl get pod -n kube-system
+kubectl get pod -n kube-system
 ```
 kubectl create -f helm-rbac.yml
 ```
