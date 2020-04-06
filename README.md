@@ -26,7 +26,9 @@ vi values.yaml
 ```
 cd /kubefed/charts/kubefed
 vi values.yaml
-	將image改成kevin7674/kubefed:latest
+	repository: kevin7674
+	image: kubefed
+	tag: latest
 ```
 deploy from local helm chart
 ```	
@@ -110,7 +112,7 @@ Build docker image:
 cd /kubefed
 mv /kubefed/images/kubefed/Dockerfile . 
 vi Dockerfile
-	將 COPY /hyperfed . 這行改成 COPY bin/hyperfed .
+	<COPY /hyperfed .> ---> <COPY bin/hyperfed .>
 docker build -t kevin7674/kubefed:latest .
 docker push kevin7674/kubefed:latest
 ```
