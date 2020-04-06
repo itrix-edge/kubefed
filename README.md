@@ -4,12 +4,7 @@ Support ARM64 architecture edge device.
 Not support K8S 1.16+ now, Kubefed only support deployment with helm2 at the moment, especially since helm3 is not officially released yet (still in beta).
 
 #
-
-#### docker images for arm64 architecture.
-```
-docker pull kevin7674/kubefed:latest
-```
-#
+### Use kubefed
 #### kubefedctl
 ```
 kubefed init fellowship \
@@ -35,7 +30,7 @@ vi values.yaml
 	image: kubefed
 	tag: latest
 ```
-deploy from local helm chart
+#### deploy from local helm chart
 ```	
 helm install /root/kubefed/charts/kubefed  --version=v0.1.0-rc6 --namespace kube-federation-system
 ```
