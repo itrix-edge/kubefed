@@ -35,7 +35,7 @@ wget https://get.helm.sh/helm-v2.16.5-linux-arm64.tar.gz
 tar -zxvf helm-v2.16.5-linux-arm64.tar.gz
 mv linux-arm64/helm /usr/local/bin/helm
 ```
-Install client
+Install client from rebuilt image
 ```
  helm init --tiller-image=jessestuart/tiller:v2.16.5-arm64
 ```
