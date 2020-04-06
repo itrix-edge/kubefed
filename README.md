@@ -22,6 +22,11 @@ kubefed init fellowship \
 ```
 #
 ### Deploy 
+
+#### docker images for arm64 architecture.
+```
+docker pull kevin7674/kubefed:latest
+```
 vi values.yaml
 ```
 cd /kubefed/charts/kubefed
