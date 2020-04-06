@@ -73,4 +73,11 @@ delete tiller
 kubectl delete deployment tiller-deploy --namespace kube-system
 ``` 
 # 
-  
+### Install GOLANG:
+``` 
+wget https://dl.google.com/go/go1.14.1.linux-arm64.tar.gz
+tar -C /usr/local -xzf go1.14.1.linux-arm64.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+``` 
+
+
