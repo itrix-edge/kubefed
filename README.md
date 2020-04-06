@@ -10,8 +10,10 @@ docker pull kevin7674/kubefed:latest
 #
 #### kubefedctl
 ```
-chmod u+x kubefedctl
-sudo mv kubefedctl /usr/local/bin/
+cd /kubefed/bin
+./kubefedctl
+chmod u+x kubefedctl-linux-arm64
+sudo cp kubefedctl-linux-arm64 /usr/local/bin
 ```
 ```
 kubefed init fellowship \
