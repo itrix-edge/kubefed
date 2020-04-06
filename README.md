@@ -39,7 +39,7 @@ check deployment
 kubectl get all -n kube-federation-system
 ``` 
 #
-### Install helm2 on ARM64 
+#### Install helm2 on ARM64 
 Install server
 ```
 wget https://get.helm.sh/helm-v2.16.5-linux-arm64.tar.gz
