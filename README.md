@@ -20,14 +20,16 @@ kubefed init fellowship \
     --apiserver-arg-overrides="--anonymous-auth=false,--v=4"
 ```
 #
-### deploy 
+### Deploy 
+vi values.yaml
 ```
 cd /kubefed/charts/kubefed
 vi values.yaml
-	將image改成kevin7674/kubefed:latest	
+	將image改成kevin7674/kubefed:latest
+```
+deploy from local helm chart
+```	
 helm install /root/kubefed/charts/kubefed  --version=v0.1.0-rc6 --namespace kube-federation-system
-	出現Error: no available release name found的錯誤信息
-	kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
 ```
 check deployment
 ```
