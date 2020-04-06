@@ -5,7 +5,7 @@ Support ARM64 architecture edge device
 
 #### docker images for arm64 architecture.
 ```
-  docker pull kevin7674/kubefed:latest
+docker pull kevin7674/kubefed:latest
 ```
 #
 #### kubefedctl
@@ -66,11 +66,11 @@ subjects:
 ```
 Error: no available release name found
 ```
-	kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
+kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
 ``` 
 delete tiller
 ``` 
-	kubectl delete deployment tiller-deploy --namespace kube-system
+kubectl delete deployment tiller-deploy --namespace kube-system
 ``` 
 # 
   
