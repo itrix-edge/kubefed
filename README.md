@@ -10,12 +10,6 @@ docker pull kevin7674/kubefed:latest
 #
 #### kubefedctl
 ```
-cd /kubefed/bin
-./kubefedctl
-chmod u+x kubefedctl-linux-arm64
-sudo cp kubefedctl-linux-arm64 /usr/local/bin
-```
-```
 kubefed init fellowship \
     --host-cluster-context=rivendell \
     --dns-provider="google-clouddns" \
@@ -81,5 +75,28 @@ wget https://dl.google.com/go/go1.14.1.linux-arm64.tar.gz
 tar -C /usr/local -xzf go1.14.1.linux-arm64.tar.gz
 export PATH=$PATH:/usr/local/go/bin
 ``` 
+### Rebuild on arm64 env
+``` 
+git clone https://github.com/kubernetes-sigs/kubefed.git
+cd kubefed
+git checkout v0.1.0-rc6
+make build .
+``` 	
+kubefedctl
+``` 
+cd /kubefed/bin
+./kubefedctl
+chmod u+x kubefedctl-linux-arm64
+sudo cp kubefedctl-linux-arm64 /usr/local/bin
+``` 	
+Build docker images:
+```
+cd /kubefed
+mv /kubefed/images/kubefed/Dockerfile . 
+vi Dockerfile
+	將 COPY /hyperfed . 這行改成 COPY bin/hyperfed .
+docker build -t kevin7674/kubefed:latest .
+docker push kevin7674/kubefed:latest
+```
 
 
