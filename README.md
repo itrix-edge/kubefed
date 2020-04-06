@@ -19,9 +19,18 @@ kubefed init fellowship \
     --apiserver-arg-overrides="--anonymous-auth=false,--v=4"
 ```
 #
-#### deploy 
+### deploy 
 ```
-helm install /root/kubefed/charts/federation-v2  --version=v0.0.4 --namespace kube-federation-system 
+cd /kubefed/charts/kubefed
+vi values.yaml
+	將image改成kevin7674/kubefed:latest	
+helm install /root/kubefed/charts/kubefed  --version=v0.1.0-rc6 --namespace kube-federation-system
+	出現Error: no available release name found的錯誤信息
+	kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
+```
+check deployment
+```
+kubectl get all -n kube-federation-system
 ``` 
 #
 ### Install helm2 on ARM64 
@@ -35,7 +44,7 @@ Install client from rebuilt image
 ```
  helm init --tiller-image=jessestuart/tiller:v2.16.5-arm64
 ```
-check
+check helm
 ```
 kubectl get pod -n kube-system
 ```
