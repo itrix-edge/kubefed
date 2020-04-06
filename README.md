@@ -1,5 +1,6 @@
 ## kubefed for itrix-edge project
-Support ARM64 architecture edge device
+Support ARM64 architecture edge device.
+Not support K8S 1.16+ now, Kubefed only support deployment with helm2 at the moment, especially since helm3 is not officially released yet (still in beta).
 
 #
 
