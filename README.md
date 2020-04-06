@@ -96,14 +96,14 @@ cd kubefed
 git checkout v0.1.0-rc6
 make build .
 ``` 	
-kubefedctl
+use kubefedctl
 ``` 
 cd /kubefed/bin
 ./kubefedctl
 chmod u+x kubefedctl-linux-arm64
 sudo cp kubefedctl-linux-arm64 /usr/local/bin
 ``` 	
-Build docker images:
+Build docker image:
 ```
 cd /kubefed
 mv /kubefed/images/kubefed/Dockerfile . 
