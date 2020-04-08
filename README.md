@@ -43,7 +43,7 @@ users:
     client-key-data: <>
 ```
 check cluster contexts
-```
+```sh
 kubectl config get-contexts
 ```
 ```sh
@@ -60,7 +60,7 @@ check federation cluster
 ```
 kubectl -n kube-federation-system get kubefedclusters
 ```
-```
+```sh
 root@xavier01:~# kubectl -n kube-federation-system get kubefedclusters
 NAME       READY   AGE
 cluster1   True    23h
