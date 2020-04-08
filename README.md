@@ -7,7 +7,6 @@ Not support K8S 1.16+ now, Kubefed only support deployment with helm2 at the mom
 ### Use kubefed
 
 vi $HOME/.kube/config
-
 An example join cluster1 to kubefed host cluster: 
 
 ```
