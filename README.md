@@ -44,7 +44,7 @@ users:
 ```
 check cluster contexts
 ```sh
-kubectl config get-contexts
+$ kubectl config get-contexts
 ```
 ```sh
 root@xavier01:~# kubectl config get-contexts
@@ -53,12 +53,12 @@ CURRENT   NAME                          CLUSTER      AUTHINFO           NAMESPAC
 *         kubernetes-admin@kubernetes   kubernetes   kubernetes-admin
 ```
 join cluster to federation
-```
-kubefedctl join <cluster1> --cluster-context <cluster1> --host-cluster-context <cluster1>
+```sh
+$ kubefedctl join <cluster1> --cluster-context <cluster1> --host-cluster-context <cluster1>
 ```
 check federation cluster
-```
-kubectl -n kube-federation-system get kubefedclusters
+```sh
+$ kubectl -n kube-federation-system get kubefedclusters
 ```
 ```sh
 root@xavier01:~# kubectl -n kube-federation-system get kubefedclusters
@@ -69,8 +69,8 @@ cluster1   True    23h
 ### Deploy 
 
 #### docker images for arm64 architecture.
-```
-docker pull kevin7674/kubefed:latest
+```sh
+$ docker pull kevin7674/kubefed:latest
 ```
 vi values.yaml
 ```
@@ -81,28 +81,28 @@ vi values.yaml
 	tag: latest
 ```
 #### deploy from local helm chart
-```	
-helm install /root/kubefed/charts/kubefed  --version=v0.1.0-rc6 --namespace kube-federation-system
+```sh	
+$ helm install /root/kubefed/charts/kubefed  --version=v0.1.0-rc6 --namespace kube-federation-system
 ```
 check deployment
-```
-kubectl get all -n kube-federation-system
+```sh
+$ kubectl get all -n kube-federation-system
 ``` 
 #
 #### Install helm2 on ARM64 
 Install server
-```
-wget https://get.helm.sh/helm-v2.16.5-linux-arm64.tar.gz
-tar -zxvf helm-v2.16.5-linux-arm64.tar.gz
-mv linux-arm64/helm /usr/local/bin/helm
+```sh
+$ wget https://get.helm.sh/helm-v2.16.5-linux-arm64.tar.gz
+$ tar -zxvf helm-v2.16.5-linux-arm64.tar.gz
+$ mv linux-arm64/helm /usr/local/bin/helm
 ```
 Install client from rebuilt image
-```
- helm init --tiller-image=jessestuart/tiller:v2.16.5-arm64
+```sh
+$ helm init --tiller-image=jessestuart/tiller:v2.16.5-arm64
 ```
 check helm
-```
-kubectl get pod -n kube-system
+```sh
+$ kubectl get pod -n kube-system
 ```
 kubectl create -f helm-rbac.yml
 ```yml
@@ -126,45 +126,45 @@ subjects:
     namespace: kube-system
 ```
 Error : no available release name found
-```
-kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
+```sh
+$ kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
 ``` 
 delete tiller
-``` 
-kubectl delete deployment tiller-deploy --namespace kube-system
+```sh 
+$ kubectl delete deployment tiller-deploy --namespace kube-system
 ``` 
 # 
 
 ### Rebuild on arm64 env
 
 Install GOLANG:
-``` 
-wget https://dl.google.com/go/go1.14.1.linux-arm64.tar.gz
-tar -C /usr/local -xzf go1.14.1.linux-arm64.tar.gz
-export PATH=$PATH:/usr/local/go/bin
+```sh
+$ wget https://dl.google.com/go/go1.14.1.linux-arm64.tar.gz
+$ tar -C /usr/local -xzf go1.14.1.linux-arm64.tar.gz
+$ export PATH=$PATH:/usr/local/go/bin
 ``` 
 code build
-``` 
-git clone https://github.com/kubernetes-sigs/kubefed.git
-cd kubefed
-git checkout v0.1.0-rc6
-make build .
+```sh
+$ git clone https://github.com/kubernetes-sigs/kubefed.git
+$ cd kubefed
+$ git checkout v0.1.0-rc6
+$ make build .
 ``` 	
 use kubefedctl
-``` 
-cd /kubefed/bin
-./kubefedctl
-chmod u+x kubefedctl-linux-arm64
-sudo cp kubefedctl-linux-arm64 /usr/local/bin
+```sh 
+$ cd /kubefed/bin
+$ ./kubefedctl
+$ chmod u+x kubefedctl-linux-arm64
+$ sudo cp kubefedctl-linux-arm64 /usr/local/bin
 ``` 	
 Build docker image:
-```
-cd /kubefed
-mv /kubefed/images/kubefed/Dockerfile . 
-vi Dockerfile
+```sh
+$ cd /kubefed
+$ mv /kubefed/images/kubefed/Dockerfile . 
+$ vi Dockerfile
 	<COPY /hyperfed .> ---> <COPY bin/hyperfed .>
-docker build -t kevin7674/kubefed:latest .
-docker push kevin7674/kubefed:latest
+$ docker build -t kevin7674/kubefed:latest .
+$ docker push kevin7674/kubefed:latest
 ```
 
 
