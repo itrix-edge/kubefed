@@ -5,16 +5,19 @@ Not support K8S 1.16+ now, Kubefed only support deployment with helm2 at the mom
 
 #
 ### Use kubefed
-#### kubefedctl
+check cluster contexts
 ```
-kubefed init fellowship \
-    --host-cluster-context=rivendell \
-    --dns-provider="google-clouddns" \
-    --dns-zone-name="example.com." \
-    --apiserver-enable-basic-auth=true \
-    --apiserver-enable-token-auth=true \
-    --apiserver-arg-overrides="--anonymous-auth=false,--v=4"
+kubectl config get-contexts
 ```
+join cluster to federation
+```
+kubefedctl join <> --cluster-context <> --host-cluster-context <>
+```
+check federation
+```
+kubectl -n kube-federation-system get kubefedclusters
+```
+
 #
 ### Deploy 
 
