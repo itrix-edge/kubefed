@@ -5,6 +5,42 @@ Not support K8S 1.16+ now, Kubefed only support deployment with helm2 at the mom
 
 #
 ### Use kubefed
+
+vi $HOME/.kube/config
+An example join cluster1 to kubefed host cluster: 
+```
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: DATA+OMITTED
+    server: https://10.172.29.1:6443
+  name: kubernetes
+- cluster:
+    certificate-authority-data: <>
+    server: <>
+  name: cluster1
+contexts:
+- context:
+    cluster: cluster1
+    user: cluster1
+  name: cluster1
+- context:
+    cluster: kubernetes
+    user: kubernetes-admin
+  name: kubernetes-admin@kubernetes
+current-context: kubernetes-admin@kubernetes
+kind: Config
+preferences: {}
+users:
+- name: kubernetes-admin
+  user:
+    client-certificate-data: REDACTED
+    client-key-data: REDACTED
+- name: cluster1
+  user:
+    client-certificate-data: <>
+    client-key-data: <>
+```
 check cluster contexts
 ```
 kubectl config get-contexts
