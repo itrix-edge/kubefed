@@ -105,7 +105,7 @@ check helm
 kubectl get pod -n kube-system
 ```
 kubectl create -f helm-rbac.yml
-```
+```yml
 apiVersion: v1
 kind: ServiceAccount
 metadata:
