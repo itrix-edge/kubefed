@@ -56,7 +56,7 @@ join cluster to federation
 ```
 kubefedctl join <cluster1> --cluster-context <cluster1> --host-cluster-context <cluster1>
 ```
-check federation
+check federation cluster
 ```
 kubectl -n kube-federation-system get kubefedclusters
 ```
