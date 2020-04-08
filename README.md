@@ -46,7 +46,7 @@ check cluster contexts
 ```
 kubectl config get-contexts
 ```
-```linux
+```
 root@xavier01:~# kubectl config get-contexts
 CURRENT   NAME                          CLUSTER      AUTHINFO           NAMESPACE
           cluster1                      cluster1     cluster1
