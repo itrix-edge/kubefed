@@ -16,7 +16,7 @@ clusters:
     certificate-authority-data: DATA+OMITTED
     server: https://10.172.29.1:6443
   name: kubernetes
-**- cluster:
+**- cluster:**
     certificate-authority-data: <>
     server: <>
   name: cluster1**
