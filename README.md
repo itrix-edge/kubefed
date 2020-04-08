@@ -135,7 +135,7 @@ $ kubectl delete deployment tiller-deploy --namespace kube-system
 ``` 
 # 
 
-### Rebuild kubefed on arm64 env
+### build kubefed on arm64 env
 
 Install GOLANG:
 ```sh
@@ -143,7 +143,7 @@ $ wget https://dl.google.com/go/go1.14.1.linux-arm64.tar.gz
 $ tar -C /usr/local -xzf go1.14.1.linux-arm64.tar.gz
 $ export PATH=$PATH:/usr/local/go/bin
 ``` 
-Rebuild code
+build code
 ```sh
 $ git clone https://github.com/kubernetes-sigs/kubefed.git
 $ cd kubefed
@@ -157,7 +157,7 @@ $ ./kubefedctl
 $ chmod u+x kubefedctl-linux-arm64
 $ sudo cp kubefedctl-linux-arm64 /usr/local/bin
 ``` 	
-Build docker image:
+build docker image:
 ```sh
 $ cd /kubefed
 $ mv /kubefed/images/kubefed/Dockerfile . 
