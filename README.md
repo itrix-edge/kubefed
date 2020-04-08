@@ -46,15 +46,25 @@ check cluster contexts
 ```
 kubectl config get-contexts
 ```
+```
+root@xavier01:~# kubectl config get-contexts
+CURRENT   NAME                          CLUSTER      AUTHINFO           NAMESPACE
+          cluster1                      cluster1     cluster1
+*         kubernetes-admin@kubernetes   kubernetes   kubernetes-admin
+```
 join cluster to federation
 ```
-kubefedctl join <> --cluster-context <> --host-cluster-context <>
+kubefedctl join <cluster1> --cluster-context <cluster1> --host-cluster-context <cluster1>
 ```
 check federation
 ```
 kubectl -n kube-federation-system get kubefedclusters
 ```
-
+```
+root@xavier01:~# kubectl -n kube-federation-system get kubefedclusters
+NAME       READY   AGE
+cluster1   True    23h
+```
 #
 ### Deploy 
 
