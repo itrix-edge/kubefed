@@ -96,15 +96,15 @@ $ ./kubefedctl federate deployments.apps nginx-deployment -n federation --host-c
 ```
 2. 利用聯邦placement,創建nginx到指定的cluster2。
 ```sh
-$ kubectl apply -f https://github.com/itrix-edge/kubefed/blob/master/federated-nginx-deployment.yaml
+$ kubectl apply -f https://github.com/itrix-edge/kubefed/blob/master/nginx-placement-sample.yaml
 
 分別到cluster1，cluster2集群查看，預期看到 :
 cluster1 沒有nginx的pod
 cluster2 有nginx的pod
 ```
-3. 利用聯邦override,在不同集群分配不同數量且版本不同的pods。 
+3. 利用聯邦overrides,在不同集群分配不同數量且版本不同的pods。 
 ```sh
-$ kubectl apply -f https://github.com/itrix-edge/kubefed/blob/master/federated-nginx-deployment.yaml
+$ kubectl apply -f https://github.com/itrix-edge/kubefed/blob/master/nginx-overrides-sample.yaml
 
 分別到cluster1，cluster2集群查看，預期看到 :
 cluster1 有3個pod 版本是nginx:1.14.2
