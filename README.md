@@ -81,10 +81,29 @@ unjoin cluster form federation
 $ ./kubefedctl unjoin <> --cluster-context <> --host-cluster-context <>
 ```
 ### 創建nginx的應用
-create testing namespace
+新增一個Namespace，測試用
 ```sh
-$ kubectl create ns <federation>
-$ ./kubefedctl federate ns <federation> --host-cluster-context=<cluster1>
+$kubectl create namespace federation
+namespace/federation created
+```
+新增一個Federation的Namespace
+```sh
+$vim fed-namespace.yaml
+apiVersion: types.kubefed.io/v1beta1
+kind: FederatedNamespace
+metadata:
+  name: test
+  namespace: test
+spec:
+  placement:
+    clusters:
+    - name: cluster1
+    - name: cluster2
+```
+調度它
+```sh
+$ kubectl create -f fed-namespace.yaml
+federatednamespace.types.kubefed.io/test created
 ```
 創建應用有幾種形式
 1. 在host集群利用k8s資源創建nginx，然後利用kubefedctl水平擴展到其他的聯邦集群。(不用修改原有的yaml檔)
