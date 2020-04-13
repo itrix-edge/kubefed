@@ -24,4 +24,3 @@ spec:
   placement:
     clusters:
     - name: cluster2
-    - name: cluster1
