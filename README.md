@@ -20,11 +20,19 @@ clusters:
     certificate-authority-data: <>
     server: <>
   name: cluster1
+- cluster:
+    certificate-authority-data: <>
+    server: <>
+  name: cluster2
 contexts:
 - context:
     cluster: cluster1
     user: cluster1
   name: cluster1
+ - context:
+    cluster: cluster2
+    user: cluster2
+  name: cluster2
 - context:
     cluster: kubernetes
     user: kubernetes-admin
@@ -41,6 +49,10 @@ users:
   user:
     client-certificate-data: <>
     client-key-data: <>
+- name: cluster2
+  user:
+    client-certificate-data: <>
+    client-key-data: <>
 ```
 check cluster contexts
 ```sh
@@ -50,11 +62,13 @@ $ kubectl config get-contexts
 root@xavier01:~# kubectl config get-contexts
 CURRENT   NAME                          CLUSTER      AUTHINFO           NAMESPACE
           cluster1                      cluster1     cluster1
+          cluster2                      cluster2     cluster2
 *         kubernetes-admin@kubernetes   kubernetes   kubernetes-admin
 ```
 join cluster to federation
 ```sh
 $ kubefedctl join <cluster1> --cluster-context <cluster1> --host-cluster-context <cluster1>
+$ kubefedctl join <cluster2> --cluster-context <cluster2> --host-cluster-context <cluster1>
 ```
 check federation cluster
 ```sh
@@ -64,6 +78,7 @@ $ kubectl -n kube-federation-system get kubefedclusters
 root@xavier01:~# kubectl -n kube-federation-system get kubefedclusters
 NAME       READY   AGE
 cluster1   True    23h
+cluster2   True    2m
 ```
 #
 ### Deploy 
