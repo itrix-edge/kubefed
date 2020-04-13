@@ -92,12 +92,13 @@ $ ./kubefedctl federate ns <federation> --host-cluster-context=<cluster1>
 $ kubectl apply -f https://github.com/itrix-edge/kubefed/blob/master/nginx-deployment.yaml
 $ ./kubefedctl federate deployments.apps nginx-deployment -n federation --host-cluster-context=cluster1
 ```
-2. 利用聯邦資源創建,在不同集群分配不同數量的pods 
+2. 利用聯邦override,在不同集群分配不同數量且版本不同的pods 
 ```sh
 $ kubectl apply -f https://github.com/itrix-edge/kubefed/blob/master/federated-nginx-deployment.yaml
 
-分別到cluster1，cluster2集群查看pods的數量
-預期看到cluster1有3個pod，cluster2有5個pod，利用聯邦override。
+分別到cluster1，cluster2集群查看，預期看到 :
+cluster1有3個pod 版本是nginx:1.14.2
+cluster2有5個pod 版本是nginx:1.17.0-alpine
 ```
 #
 ### Deploy 
