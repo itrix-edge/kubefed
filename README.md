@@ -76,6 +76,10 @@ cluster1     True    5d
 cluster2     True    8m
 kubernetes   True    1m
 ```
+unjoin cluster form federation
+```sh
+$ ./kubefedctl unjoin <> --cluster-context <> --host-cluster-context <>
+```
 #
 ### Deploy 
 
