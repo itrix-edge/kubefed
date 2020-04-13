@@ -93,21 +93,7 @@ kubectl apply -f https://github.com/itrix-edge/kubefed/blob/master/nginx-deploym
 kubectl apply -f https://github.com/itrix-edge/kubefed/blob/master/federated-nginx-deployment.yaml
 
 分別到cluster1，cluster2集群查看pods的數量
-cluster1 
-NAME READY STATUS RESTARTS AGE 
-test-deployment-7c867888f-2h4nr 1/1 Running 0 7m24s 
-test-deployment-7c867888f-lrmg6 1/1 Running 0 7m24s 
-test-deployment-7c867888f-lttql 1/1 Running 0 7m24s
-
-Cluster2
-NAME READY STATUS RESTARTS AGE 
-test-deployment-59769b7d7d-48sw5 1/1 Running 0 7m43s 
-test-deployment-59769b7d7d-86r9k 1/1 Running 0 7m43s 
-test-deployment-59769b7d7d-c9lfz 1/1 Running 0 7m43s 
-test-deployment-59769b7d7d-shsnr 1/1 Running 0 7m43s 
-test-deployment-59769b7d7d-sr6wd 1/1 Running 0 7m43s
-
-可以看到cluster1有3個pod，cluster2有5個pod，利用聯邦override。
+預期看到cluster1有3個pod，cluster2有5個pod，利用聯邦override。
 ```
 unjoin cluster form federation
 ```sh
