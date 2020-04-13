@@ -81,14 +81,15 @@ create testing namespace
 $ kubectl create ns <federation>
 $ ./kubefedctl federate ns <federation> --host-cluster-context=<cluster1>
 ```
-創建nginx的應用
+### 創建nginx的應用
+# 創建應用有兩種形式
+1. 在host集群利用k8s資源創建nginx，然後聯邦到其他的集群
 ```sh
-# 創建應用有兩種形式。
-1.在host集群利用k8s資源創建nginx，然後聯邦到其他的集群
 kubectl apply -f nginx.yaml 
 kubefedctl federate deployments.apps nginx -n federation --host-cluster-context=cluster1
-
-2.利用聯邦資源創建,在不同集群分配不同數量的pods 
+```
+2. 利用聯邦資源創建,在不同集群分配不同數量的pods 
+```sh
 kubectl apply -f https://github.com/itrix-edge/kubefed/blob/master/federated-nginx-deployment.yaml
 
 分別到cluster1，cluster2集群查看pods的數量
