@@ -95,7 +95,7 @@ $ ./kubefedctl federate deployments.apps nginx-deployment -n federation --host-c
 分別到cluster1，cluster2集群查看，可以看到namespace federation底下都有nginx的pod。
 ```
 要怎麼透過聯邦刪除服務? 目前在本地刪除他還會長出來
-```
+
 2. 利用聯邦placement,創建nginx到指定的cluster2。
 ```sh
 $ kubectl create -f https://github.com/itrix-edge/kubefed/blob/master/nginx-placement-sample.yaml
