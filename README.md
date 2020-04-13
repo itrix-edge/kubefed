@@ -91,6 +91,8 @@ $ ./kubefedctl federate ns <federation> --host-cluster-context=<cluster1>
 ```sh
 $ kubectl apply -f https://github.com/itrix-edge/kubefed/blob/master/nginx-deployment.yaml
 $ ./kubefedctl federate deployments.apps nginx-deployment -n federation --host-cluster-context=cluster1
+
+分別到cluster1，cluster2集群查看，可以看到namespace federation底下都有nginx的pod。 
 ```
 2. 利用聯邦override,在不同集群分配不同數量且版本不同的pods 
 ```sh
