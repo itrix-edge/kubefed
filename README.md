@@ -4,7 +4,7 @@ Use kubefed on ARM64 architecture edge device.
 kubefed not support K8S 1.16+ now, it only support deployment with helm2 at the moment, especially since helm3 is not officially released yet (still in beta).
 #
 ## requirement
-### Use kubefed
+### Use kubefed to federate clusters
 
 An example join cluster1 to kubefed host cluster :
 
@@ -76,12 +76,12 @@ cluster1     True    5d
 cluster2     True    8m
 kubernetes   True    1m
 ```
+### 創建nginx的應用
 create testing namespace
 ```sh
 $ kubectl create ns <federation>
 $ ./kubefedctl federate ns <federation> --host-cluster-context=<cluster1>
 ```
-### 創建nginx的應用
 創建應用有兩種形式
 1. 在host集群利用k8s資源創建nginx，然後聯邦到其他的集群
 ```sh
