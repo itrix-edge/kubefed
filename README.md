@@ -92,8 +92,8 @@ $vim fed-namespace.yaml
 apiVersion: types.kubefed.io/v1beta1
 kind: FederatedNamespace
 metadata:
-  name: test
-  namespace: test
+  name: federation
+  namespace: federation
 spec:
   placement:
     clusters:
