@@ -81,6 +81,36 @@ create testing namespace
 $ kubectl create ns <federation>
 $ ./kubefedctl federate ns <federation> --host-cluster-context=<cluster1>
 ```
+創建nginx的應用
+```
+# 創建應用有兩種形式。
+1.在host集群利用k8s資源創建nginx，然後聯邦到其他的集群
+kubectl apply -f nginx.yaml 
+kubefedctl federate deployments.apps nginx<這個nginx是創建的deployment的名稱> -n test-namespace --host-cluster -context=cluste1
+
+2.直接利用聯邦資源創建,在不同集群分配不同數量的pods 
+kubectl apply -f https://github.com/kubernetes-sigs/kubefed/blob/master/example/sample1/federateddeployment.yaml
+
+3.分別到cluster1，cluster2集群查看pods的數量
+cluster1 
+NAME READY STATUS RESTARTS AGE 
+nginx-85ff79dd56-5dhrw 1/1 Running 0 7m17s 
+nginx-85ff79dd56-lvf6x 1/1 Running 0 7m17s 
+test-deployment-7c867888f-2h4nr 1/1 Running 0 7m24s 
+test-deployment-7c867888f-lrmg6 1/1 Running 0 7m24s 
+test-deployment-7c867888f-lttql 1/1 Running 0 7m24s
+
+Cluster2中
+的Nginx-85ff79dd56-t9mzr 1/1運行0 7m36s 
+nginx的-85ff79dd56-xbbxp 1/1運行0 7m36s 
+測試與部署59769b7d7d-48sw5 1/1運行0 7m43s 
+測試與部署59769b7d7d-86r9k 1/1運行0 7m43s 
+測試-deployment-59769b7d7d-c9lfz 1/1運行0 7m43s 
+test-deployment-59769b7d7d-shsnr 1/1運行0 7m43s 
+test-deployment-59769b7d7d-sr6wd 1/1運行0 7m43s
+
+可以看到cluster1有3個pod，cluster2有5個pod。利用的聯邦override.
+```
 unjoin cluster form federation
 ```sh
 $ ./kubefedctl unjoin <> --cluster-context <> --host-cluster-context <>
