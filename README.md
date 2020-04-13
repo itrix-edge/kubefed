@@ -86,21 +86,29 @@ create testing namespace
 $ kubectl create ns <federation>
 $ ./kubefedctl federate ns <federation> --host-cluster-context=<cluster1>
 ```
-創建應用有兩種形式
-1. 在host集群利用k8s資源創建nginx，然後聯邦到其他的集群
+創建應用有幾種形式
+1. 在host集群利用k8s資源創建nginx，然後利用kubefedctl水平擴展到其他的聯邦集群。(不用修改原有的yaml檔)
 ```sh
 $ kubectl apply -f https://github.com/itrix-edge/kubefed/blob/master/nginx-deployment.yaml
 $ ./kubefedctl federate deployments.apps nginx-deployment -n federation --host-cluster-context=cluster1
 
 分別到cluster1，cluster2集群查看，可以看到namespace federation底下都有nginx的pod。 
 ```
-2. 利用聯邦override,在不同集群分配不同數量且版本不同的pods 
+2. 利用聯邦placement,創建nginx到指定的cluster2。
 ```sh
 $ kubectl apply -f https://github.com/itrix-edge/kubefed/blob/master/federated-nginx-deployment.yaml
 
 分別到cluster1，cluster2集群查看，預期看到 :
-cluster1有3個pod 版本是nginx:1.14.2
-cluster2有5個pod 版本是nginx:1.17.0-alpine
+cluster1 沒有nginx的pod
+cluster2 有nginx的pod
+```
+3. 利用聯邦override,在不同集群分配不同數量且版本不同的pods。 
+```sh
+$ kubectl apply -f https://github.com/itrix-edge/kubefed/blob/master/federated-nginx-deployment.yaml
+
+分別到cluster1，cluster2集群查看，預期看到 :
+cluster1 有3個pod 版本是nginx:1.14.2
+cluster2 有5個pod 版本是nginx:1.17.0-alpine
 ```
 #
 ### Deploy 
