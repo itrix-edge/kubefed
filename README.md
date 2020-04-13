@@ -56,9 +56,6 @@ users:
 ```
 check cluster contexts
 ```sh
-$ kubectl config get-contexts
-```
-```sh
 root@xavier01:~# kubectl config get-contexts
 CURRENT   NAME                          CLUSTER      AUTHINFO           NAMESPACE
           cluster1                      cluster1     cluster1
@@ -67,18 +64,17 @@ CURRENT   NAME                          CLUSTER      AUTHINFO           NAMESPAC
 ```
 join cluster to federation
 ```sh
-$ kubefedctl join <cluster1> --cluster-context <cluster1> --host-cluster-context <cluster1>
-$ kubefedctl join <cluster2> --cluster-context <cluster2> --host-cluster-context <cluster1>
+$ ./kubefedctl join <cluster1> --cluster-context <cluster1> --host-cluster-context <cluster1>
+$ ./kubefedctl join <cluster2> --cluster-context <cluster2> --host-cluster-context <cluster1>
+$ ./kubefedctl join <kubernetes> --cluster-context <kubernetes-admin@kubernetes> --host-cluster-context <cluster1>
 ```
 check federation cluster
 ```sh
-$ kubectl -n kube-federation-system get kubefedclusters
-```
-```sh
 root@xavier01:~# kubectl -n kube-federation-system get kubefedclusters
 NAME       READY   AGE
-cluster1   True    23h
-cluster2   True    2m
+cluster1     True    5d
+cluster2     True    8m
+kubernetes   True    1m
 ```
 #
 ### Deploy 
