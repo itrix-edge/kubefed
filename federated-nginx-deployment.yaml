@@ -2,7 +2,7 @@ apiVersion: types.kubefed.io/v1beta1
 kind: FederatedDeployment
 metadata:
   name: test-deployment
-  namespace: test-namespace
+  namespace: federation
 spec:
   template:
     metadata:
