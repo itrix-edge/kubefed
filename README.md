@@ -82,7 +82,7 @@ $ kubectl create ns <federation>
 $ ./kubefedctl federate ns <federation> --host-cluster-context=<cluster1>
 ```
 ### 創建nginx的應用
-# 創建應用有兩種形式
+創建應用有兩種形式
 1. 在host集群利用k8s資源創建nginx，然後聯邦到其他的集群
 ```sh
 kubectl apply -f nginx.yaml 
