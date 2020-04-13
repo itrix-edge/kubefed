@@ -85,7 +85,7 @@ $ ./kubefedctl federate ns <federation> --host-cluster-context=<cluster1>
 創建應用有兩種形式
 1. 在host集群利用k8s資源創建nginx，然後聯邦到其他的集群
 ```sh
-kubectl apply -f nginx.yaml 
+kubectl apply -f nginx-deployment.yaml
 kubefedctl federate deployments.apps nginx -n federation --host-cluster-context=cluster1
 ```
 2. 利用聯邦資源創建,在不同集群分配不同數量的pods 
