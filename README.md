@@ -76,6 +76,10 @@ cluster1     True    5d
 cluster2     True    8m
 kubernetes   True    1m
 ```
+unjoin cluster form federation
+```sh
+$ ./kubefedctl unjoin <> --cluster-context <> --host-cluster-context <>
+```
 ### 創建nginx的應用
 create testing namespace
 ```sh
@@ -94,10 +98,6 @@ $ kubectl apply -f https://github.com/itrix-edge/kubefed/blob/master/federated-n
 
 分別到cluster1，cluster2集群查看pods的數量
 預期看到cluster1有3個pod，cluster2有5個pod，利用聯邦override。
-```
-unjoin cluster form federation
-```sh
-$ ./kubefedctl unjoin <> --cluster-context <> --host-cluster-context <>
 ```
 #
 ### Deploy 
