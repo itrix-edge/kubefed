@@ -86,7 +86,7 @@ $ ./kubefedctl unjoin <> --cluster-context <> --host-cluster-context <>
 $kubectl create namespace federation
 namespace/federation created
 ```
-新增一個Federation的Namespace
+在剛剛新增的Namespace底下再創建一個FederatedNamespace
 ```sh
 $vim fed-namespace.yaml
 apiVersion: types.kubefed.io/v1beta1
