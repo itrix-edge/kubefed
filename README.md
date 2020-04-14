@@ -105,6 +105,12 @@ spec:
 $ kubectl create -f fed-namespace.yaml
 federatednamespace.types.kubefed.io/test created
 ```
+檢查
+```sh
+root@xavier01:~/kubefed/bin# kubectl -n federation get federatednamespaces
+NAME         AGE
+federation   13m
+```
 創建應用有幾種形式
 1. 在host集群利用k8s資源創建nginx，然後利用kubefedctl水平擴展到其他的聯邦集群。(不用修改原有的yaml檔)
 ```sh
