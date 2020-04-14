@@ -139,6 +139,7 @@ root@xavier01:~/kubefed/bin# kubectl -n federation delete federateddeployment.ty
 federateddeployment.types.kubefed.io "nginx-deployment" deleted
 ```
 2. **placement**
+
 利用聯邦placement,創建nginx到指定的cluster2。
 ```sh
 $ kubectl create -f https://github.com/itrix-edge/kubefed/blob/master/nginx-placement-sample.yaml
@@ -149,6 +150,7 @@ cluster1 沒有nginx的pod
 cluster2 有nginx的pod
 ```
 3. **overrides**
+
 利用聯邦overrides,在不同集群分配不同數量且版本不同的pods。 
 ```sh
 $ kubectl create -f https://github.com/itrix-edge/kubefed/blob/master/nginx-overrides-sample.yaml
