@@ -112,16 +112,15 @@ NAME         AGE
 federation   13m
 ```
 創建應用有幾種形式
-1. 水平擴展
+1. **水平擴展**
 
 在host集群利用k8s資源創建nginx，然後利用kubefedctl水平擴展到其他的聯邦集群。(不用修改原有的yaml檔)
 ```sh
 $ kubectl create -f https://github.com/itrix-edge/kubefed/blob/master/nginx-deployment.yaml
 $ ./kubefedctl federate deployments.apps nginx-deployment -n federation --host-cluster-context=cluster1
 ```
-```sh
 分別到cluster1，cluster2集群查看，可以看到namespace federation底下都有nginx的pod。
-
+```sh
 root@xavier01:~/kubefed/bin# kubectl --context cluster1 -n federation get deployments
 NAME               READY   UP-TO-DATE   AVAILABLE   AGE
 nginx-deployment   2/2     2            2           4s
@@ -130,28 +129,32 @@ root@xavier01:~/kubefed/bin# kubectl --context cluster2 -n federation get deploy
 NAME               READY   UP-TO-DATE   AVAILABLE   AGE
 nginx-deployment   2/2     2            2           4s
 ```
-```sh
 部署Deployment 之後，可以通過federateddeployment.types.kubefed.io查看部署狀態。
+```sh
 $ kubectl -n federation describe federateddeployment.types.kubefed.io/nginx-deployment
 ```
-```
 刪除聯邦的服務
+```sh
 root@xavier01:~/kubefed/bin# kubectl -n federation delete federateddeployment.types.kubefed.io/nginx-deployment
 federateddeployment.types.kubefed.io "nginx-deployment" deleted
 ```
-2. 利用聯邦placement,創建nginx到指定的cluster2。
+2. **placement**
+利用聯邦placement,創建nginx到指定的cluster2。
 ```sh
 $ kubectl create -f https://github.com/itrix-edge/kubefed/blob/master/nginx-placement-sample.yaml
-
-分別到cluster1，cluster2集群查看，預期看到 :
+```
+分別到cluster1，cluster2集群查看，預期看到 : 
+```sh
 cluster1 沒有nginx的pod
 cluster2 有nginx的pod
 ```
-3. 利用聯邦overrides,在不同集群分配不同數量且版本不同的pods。 
+3. **overrides**
+利用聯邦overrides,在不同集群分配不同數量且版本不同的pods。 
 ```sh
 $ kubectl create -f https://github.com/itrix-edge/kubefed/blob/master/nginx-overrides-sample.yaml
-
+```
 分別到cluster1，cluster2集群查看，預期看到 :
+```sh
 cluster1 有3個pod 版本是nginx:1.14.2
 cluster2 有5個pod 版本是nginx:1.17.0-alpine
 ```
