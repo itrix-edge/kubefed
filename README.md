@@ -113,6 +113,14 @@ $ ./kubefedctl federate deployments.apps nginx-deployment -n federation --host-c
 
 分別到cluster1，cluster2集群查看，可以看到namespace federation底下都有nginx的pod。
 
+root@xavier01:~/kubefed/bin# kubectl --context cluster1 -n federation get deployments
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+nginx-deployment   2/2     2            2           4s
+
+root@xavier01:~/kubefed/bin# kubectl --context cluster2 -n federation get deployments
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+nginx-deployment   2/2     2            2           4s
+
 # 要怎麼透過聯邦刪除服務? 目前在本地刪除服務還會長出來
 # 似乎只能刪namespace
 ```
