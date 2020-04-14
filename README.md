@@ -121,8 +121,8 @@ root@xavier01:~/kubefed/bin# kubectl --context cluster2 -n federation get deploy
 NAME               READY   UP-TO-DATE   AVAILABLE   AGE
 nginx-deployment   2/2     2            2           4s
 
-# 要怎麼透過聯邦刪除服務? 目前在本地刪除服務還會長出來
-# 似乎只能刪namespace
+# 要怎麼透過聯邦刪除服務? 目前刪除本地的服務後 聯邦的還會長出來
+# 似乎只能刪除聯邦的namespace
 ```
 2. 利用聯邦placement,創建nginx到指定的cluster2。
 ```sh
