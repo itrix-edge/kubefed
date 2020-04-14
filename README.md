@@ -110,7 +110,8 @@ federatednamespace.types.kubefed.io/test created
 ```sh
 $ kubectl create -f https://github.com/itrix-edge/kubefed/blob/master/nginx-deployment.yaml
 $ ./kubefedctl federate deployments.apps nginx-deployment -n federation --host-cluster-context=cluster1
-
+```
+```sh
 分別到cluster1，cluster2集群查看，可以看到namespace federation底下都有nginx的pod。
 
 root@xavier01:~/kubefed/bin# kubectl --context cluster1 -n federation get deployments
