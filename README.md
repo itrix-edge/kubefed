@@ -131,6 +131,7 @@ nginx-deployment   2/2     2            2           4s
 ```
 部署Deployment 之後，可以通過federateddeployment.types.kubefed.io查看部署狀態。
 ```sh
+$ kubectl -n federation get federateddeployment.types.kubefed.io
 $ kubectl -n federation describe federateddeployment.types.kubefed.io/nginx-deployment
 ```
 刪除聯邦的服務
