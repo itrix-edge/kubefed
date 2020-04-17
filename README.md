@@ -121,11 +121,11 @@ $ ./kubefedctl federate deployments.apps nginx-deployment -n federation --host-c
 ```
 分別到cluster1，cluster2集群查看，可以看到namespace federation底下都有nginx的pod。
 ```sh
-root@xavier01:~/kubefed/bin# kubectl --context cluster1 -n federation get deployments
+root@xavier01:~/kubefed/bin# kubectl --context cluster1 -n federation get all
 NAME               READY   UP-TO-DATE   AVAILABLE   AGE
 nginx-deployment   2/2     2            2           4s
 
-root@xavier01:~/kubefed/bin# kubectl --context cluster2 -n federation get deployments
+root@xavier01:~/kubefed/bin# kubectl --context cluster2 -n federation get all
 NAME               READY   UP-TO-DATE   AVAILABLE   AGE
 nginx-deployment   2/2     2            2           4s
 ```
