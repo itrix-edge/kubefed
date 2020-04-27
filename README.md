@@ -145,7 +145,7 @@ federateddeployment.types.kubefed.io "nginx-deployment" deleted
 ```sh
 $ kubectl create -f https://github.com/itrix-edge/kubefed/blob/master/nginx-placement-sample.yaml
 ```
-分別到cluster1，cluster2集群查看，預期看到 : 
+分別到cluster1，cluster2集群查看，可看到 : 
 ```sh
 cluster1 沒有nginx的pod
 cluster2 有nginx的pod
@@ -156,7 +156,7 @@ cluster2 有nginx的pod
 ```sh
 $ kubectl create -f https://github.com/itrix-edge/kubefed/blob/master/nginx-overrides-sample.yaml
 ```
-分別到cluster1，cluster2集群查看，預期看到 :
+分別到cluster1，cluster2集群查看，可看到 :
 ```sh
 cluster1 有3個pod 版本是nginx:1.14.2
 cluster2 有5個pod 版本是nginx:1.17.0-alpine
